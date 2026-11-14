@@ -416,10 +416,80 @@ footer{
   .game{padding:19px}
   .game-heading{margin-bottom:14px}
 }
+.bubble-background{
+  position:fixed;
+  inset:0;
+  overflow:hidden;
+  pointer-events:none;
+  z-index:0;
+}
+
+.bubble-background span{
+  position:absolute;
+  bottom:-100px;
+  left:var(--x);
+  width:var(--size);
+  height:var(--size);
+  border:1px solid rgba(213,173,89,.22);
+  border-radius:50%;
+  background:radial-gradient(
+    circle at 30% 30%,
+    rgba(255,255,255,.10),
+    rgba(213,173,89,.025) 55%,
+    transparent 75%
+  );
+  box-shadow:inset 0 0 12px rgba(213,173,89,.06);
+  animation:bubbleFloat var(--duration) linear infinite;
+  animation-delay:var(--delay);
+}
+
+.bubble-background span:nth-child(1){--x:5%;--size:22px;--duration:19s;--delay:-5s}
+.bubble-background span:nth-child(2){--x:12%;--size:9px;--duration:15s;--delay:-12s}
+.bubble-background span:nth-child(3){--x:20%;--size:35px;--duration:24s;--delay:-8s}
+.bubble-background span:nth-child(4){--x:29%;--size:14px;--duration:17s;--delay:-3s}
+.bubble-background span:nth-child(5){--x:38%;--size:27px;--duration:22s;--delay:-16s}
+.bubble-background span:nth-child(6){--x:47%;--size:11px;--duration:16s;--delay:-7s}
+.bubble-background span:nth-child(7){--x:56%;--size:40px;--duration:26s;--delay:-18s}
+.bubble-background span:nth-child(8){--x:65%;--size:17px;--duration:18s;--delay:-9s}
+.bubble-background span:nth-child(9){--x:74%;--size:29px;--duration:23s;--delay:-13s}
+.bubble-background span:nth-child(10){--x:83%;--size:12px;--duration:16s;--delay:-4s}
+.bubble-background span:nth-child(11){--x:91%;--size:34px;--duration:25s;--delay:-20s}
+.bubble-background span:nth-child(12){--x:97%;--size:16px;--duration:20s;--delay:-11s}
+.bubble-background span:nth-child(13){--x:16%;--size:7px;--duration:13s;--delay:-2s}
+.bubble-background span:nth-child(14){--x:43%;--size:8px;--duration:14s;--delay:-10s}
+.bubble-background span:nth-child(15){--x:69%;--size:7px;--duration:15s;--delay:-6s}
+.bubble-background span:nth-child(16){--x:88%;--size:10px;--duration:17s;--delay:-14s}
+
+@keyframes bubbleFloat{
+  0%{
+    transform:translate3d(0,0,0) scale(.8);
+    opacity:0;
+  }
+  15%{opacity:.65}
+  50%{
+    transform:translate3d(25px,-55vh,0) scale(1);
+  }
+  85%{opacity:.4}
+  100%{
+    transform:translate3d(-20px,-115vh,0) scale(1.15);
+    opacity:0;
+  }
+}
+
+header,main,footer{
+  position:relative;
+  z-index:1;
+}
 </style>
 </head>
 
 <body>
+ <div class="bubble-background" aria-hidden="true">
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span>
+</div>
 
 <header>
   <div class="logo">
